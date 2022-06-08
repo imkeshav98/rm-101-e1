@@ -7,7 +7,6 @@ const Task = () => {
   const { todo, handleChange } = useContext(TodoContext);
 
   function handleClick(id) {
-    let task = todo.filter((task) => task.id === id)[0];
     handleChange(
       todo.map((task) =>
         task.id === id ? { ...task, done: !task.done } : task
@@ -43,7 +42,7 @@ const Task = () => {
           )}
           <div
             data-testid="task-text"
-            className={task.done ? "notchecked" : "checked"}
+            style={task.done ? { textDecoration: "line-through" } : {}}
           >
             {task.text}
           </div>

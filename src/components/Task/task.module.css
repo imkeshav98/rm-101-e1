@@ -6,7 +6,6 @@
 
 .checked {
   text-decoration: line-through;
-  color: blue;
 }
 .notchecked {
   text-decoration: none;
