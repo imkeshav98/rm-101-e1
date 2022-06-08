@@ -15,6 +15,10 @@ const Task = () => {
     );
   }
 
+  function handleDelete(id) {
+    handleChange(todo.filter((task) => task.id !== id));
+  }
+
   return (
     <>
       {todo.map((task) => (
@@ -44,7 +48,14 @@ const Task = () => {
             {task.text}
           </div>
           <Counter countvalue={task.count} />
-          <button data-testid="task-remove-button">x</button>
+          <button
+            data-testid="task-remove-button"
+            onClick={() => {
+              handleDelete(task.id);
+            }}
+          >
+            x
+          </button>
         </li>
       ))}
     </>
