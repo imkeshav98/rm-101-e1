@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TodoContext } from "../../context/todoContext";
+import Counter from "../Counter/Counter";
 import styles from "./task.module.css";
 
 const Task = () => {
-  // NOTE: do not delete `data-testid` key value pair
+  const { todo, handleChange } = useContext(TodoContext);
   return (
-    <li data-testid="task" className={styles.task}>
-      <input type="checkbox" data-testid="task-checkbox" />
-      <div data-testid="task-text"></div>
-      {/* Counter here */}
-      <button data-testid="task-remove-button"></button>
-    </li>
+    <>
+      {todo.map((task) => (
+        <li data-testid="task" className={styles.task}>
+          <input type="checkbox" data-testid="task-checkbox" />
+          <div data-testid="task-text">{task.text}</div>
+          <Counter countvalue={task.count} />
+          <button data-testid="task-remove-button">x</button>
+        </li>
+      ))}
+    </>
   );
 };
 
